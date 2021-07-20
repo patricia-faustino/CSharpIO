@@ -18,36 +18,19 @@ namespace ByteBankImportacaoExportacao
             
             using (var fluxoDoArquivo = new FileStream(endereco, FileMode.Open))
             {
-                var buffer = new byte[1024]; // 1kb
-
-                var numeroDeBytesLidos = -1;
-
-                while(numeroDeBytesLidos != 0)
+                using(var leitor = new StreamReader(fluxoDoArquivo))
                 {
-                    numeroDeBytesLidos = fluxoDoArquivo.Read(buffer, 0, 1024);
-                    EscreverBuffer(buffer, numeroDeBytesLidos);
+                    while (!leitor.EndOfStream)
+                    {
+                        var linha = leitor.ReadLine();
+                        Console.WriteLine(linha);
+                    }
                 }
-
-                //Internamente o IDisposable chama o fluxoDoArquivo.Close(); e libera o arquivo para ser utilziado e
-                //verifica se o arquivo fluxoDoArquivo é nulo
 
             }
             Console.ReadLine();
         }
-        static void EscreverBuffer(byte[] buffer, int bufferLidos)
-        {
-            var utf8 = UTF8Encoding.Default;
 
-            var texto = utf8.GetString(buffer, 0, bufferLidos);
-            Console.WriteLine(texto);
-
-
-            //foreach (var meuByte in buffer)
-            //{
-            //    Console.Write(meuByte);
-            //    Console.Write(" ");
-            //}
-        }
     }
 } 
  
