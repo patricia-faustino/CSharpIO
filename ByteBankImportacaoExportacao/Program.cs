@@ -27,19 +27,21 @@ namespace ByteBankImportacaoExportacao
                 EscreverBuffer(buffer);
             }
 
-            
-
-            
-
             Console.ReadLine();
         }
         static void EscreverBuffer(byte[] buffer)
         {
-            foreach (var meuByte in buffer)
-            {
-                Console.Write(meuByte);
-                Console.Write(" ");
-            }
+            var utf8 = UTF8Encoding.Default;
+
+            var texto = utf8.GetString(buffer);
+            Console.WriteLine(texto);
+
+
+            //foreach (var meuByte in buffer)
+            //{
+            //    Console.Write(meuByte);
+            //    Console.Write(" ");
+            //}
         }
     }
 } 
