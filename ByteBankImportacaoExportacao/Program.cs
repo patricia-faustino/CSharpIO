@@ -15,18 +15,23 @@ namespace ByteBankImportacaoExportacao
         {
             var endereco = "contas.txt";
 
-            var fluxoDoArquivo = new FileStream(endereco, FileMode.Open );
-
-            var buffer = new byte[1024]; // 1kb
-
-            var numeroDeBytesLidos = -1;
-
-            while(numeroDeBytesLidos != 0)
+            
+            using (var fluxoDoArquivo = new FileStream(endereco, FileMode.Open))
             {
-                numeroDeBytesLidos = fluxoDoArquivo.Read(buffer, 0, 1024);
-                EscreverBuffer(buffer);
-            }
+                var buffer = new byte[1024]; // 1kb
 
+                var numeroDeBytesLidos = -1;
+
+                while(numeroDeBytesLidos != 0)
+                {
+                    numeroDeBytesLidos = fluxoDoArquivo.Read(buffer, 0, 1024);
+                    EscreverBuffer(buffer);
+                }
+
+                //Internamente o IDisposable chama o fluxoDoArquivo.Close(); e libera o arquivo para ser utilziado
+
+
+            }
             Console.ReadLine();
         }
         static void EscreverBuffer(byte[] buffer)
