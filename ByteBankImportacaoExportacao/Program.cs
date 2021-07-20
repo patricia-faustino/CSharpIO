@@ -11,7 +11,8 @@ namespace ByteBankImportacaoExportacao
         static void Main(string[] args)
         {
 
-            CriandoArquivo();
+            CriarArquivoComWriter();
+            Console.WriteLine("Aplicacao Finalizada.....");
 
             Console.ReadLine();
         }

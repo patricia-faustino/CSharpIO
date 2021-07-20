@@ -23,5 +23,20 @@ namespace ByteBankImportacaoExportacao
             }
 
         }
+
+        static void CriarArquivoComWriter()
+        {
+            var caminhoNovoArquivo = "contasExportadas.csv";
+
+            using (var fluxoDeArquivo = new FileStream(caminhoNovoArquivo, FileMode.CreateNew))
+            using(var escritor = new StreamWriter(fluxoDeArquivo, Encoding.UTF8))
+            {
+                //usa encoding padrão caso não seja explicitado
+
+                escritor.Write("456, 78945, 78456.50, Pedro");
+            }
+                 
+            
+        }
     }
 }
