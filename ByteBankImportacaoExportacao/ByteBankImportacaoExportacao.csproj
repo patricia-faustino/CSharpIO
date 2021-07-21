@@ -48,6 +48,8 @@
     <Compile Include="Modelos\ContaCorrente.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StreamBinario.cs" />
+    <Compile Include="UsandoStreamDeEntradaDaConsole.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
